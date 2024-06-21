@@ -15,12 +15,19 @@
                             </div>
                         </div><br>
                         <div class="col-12 form-group">
-                            <div class="form-floating">
-                                <input class="form-control" type="password" name="password" id="password"
-                                    placeholder="Password">
+                            <div class="form-floating position-relative">
+                                <input class="form-control" type="password" name="password" id="password" placeholder=" " autocomplete="off"
+                                    oninput="toggleEyeIcon()">
                                 <label for="password">Password</label>
+                                <span class="input-group-text email" id="eyeIcon"
+                                    style="display: none; cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);"
+                                    onclick="togglePassword()">
+                                    <img src="{{ url_for('static', filename='/img/eye-c.jpg') }}" alt="Toggle password visibility"
+                                        id="passwordToggle">
+                                </span>
                             </div>
                         </div>
+                        
                         <div class="row b1">
                             <div class="col-md-6">
                                 <a href="/f_password" class="p1 mt-2">Forgot Password?</a>
@@ -55,6 +62,32 @@
             return true;
         }
     </script>
+<script>
+    function togglePassword() {
+        var passwordInput = document.getElementById("password");
+        var passwordToggle = document.getElementById("passwordToggle");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordToggle.src = "{{ url_for('static', filename='/img/eye-o.jpg') }}"; // Change the image to hide password
+        } else {
+            passwordInput.type = "password";
+            passwordToggle.src = "{{ url_for('static', filename='/img/eye-c.jpg') }}"; // Change the image to show password
+        }
+    }
+
+    function toggleEyeIcon() {
+        var passwordInput = document.getElementById("password");
+        var eyeIcon = document.getElementById("eyeIcon");
+
+        if (passwordInput.value.trim() !== "") {
+            eyeIcon.style.display = "block"; // Show the eye icon
+        } else {
+            eyeIcon.style.display = "none"; // Hide the eye icon
+        }
+    }
+</script>
+
 </body>
 
 </html>
