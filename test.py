@@ -10,31 +10,11 @@ import logging
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = ''.join(random.choices(string.ascii_letters + string.digits, k=16))
-password = urllib.parse.quote_plus('NikiKalai@2003')  # URL encode the password
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://root:{password}@localhost/loan_data'
+password = urllib.parse.quote_plus('your database password')  # URL encode the password
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://your root name:{password}@your host name/your database name'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
-
-# Define the LoanApp model matching your existing table
-# class LoanApp(db.Model):
-#     __tablename__ = 'loan_app'
-#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-#     email = db.Column(db.String(120), unique=True, nullable=False)
-#     password = db.Column(db.String(120), nullable=False)
-#     security_question = db.Column(db.String(120), nullable=False)
-#     no_of_dependents = db.Column(db.Integer, nullable=False)
-#     education = db.Column(db.String(50), nullable=False)
-#     self_employed = db.Column(db.String(50), nullable=False)
-#     income_annum = db.Column(db.Float, nullable=False)
-#     loan_amount = db.Column(db.Float, nullable=False)
-#     loan_term = db.Column(db.Integer, nullable=False)
-#     cibil_score = db.Column(db.Integer, nullable=False)
-#     residential_assets_value = db.Column(db.Float, nullable=False)
-#     commercial_assets_value = db.Column(db.Float, nullable=False)
-#     luxury_assets_value = db.Column(db.Float, nullable=False)
-#     bank_asset_value = db.Column(db.Float, nullable=False)
-#     loan_status = db.Column(db.String(20))  # Add loan_status to the model
 
 class User(db.Model):
     __tablename__ = 'user'
