@@ -1,27 +1,40 @@
 {% include 'header.html' %}
 
 <body>
-    <div class="container-fluid page-header py-3 wow fadeIn"  data-wow-delay="0.1s">
+    <div class="container-fluid page-header py-3 wow fadeIn" data-wow-delay="0.1s">
         <div class="container text-center py-5">
             <div class="f2">
                 <h2 class="head1">Reset Password</h2>
                 <form method="post" action="/reset_p" method="post" onsubmit="return validateResetPasswordForm()">
                     <div class="f3">
-                       
+
                         <div class="col-12 form-group">
-                            <div class="form-floating">
-                                <input class="form-control" type="password" id="new_password" name="new_password"
-                                    placeholder="Password">
+                            <div class="form-floating position-relative">
+                                <input class="form-control" type="password" id="new_password" name="new_password" placeholder="Password"
+                                    oninput="toggleEyeIcon('new_password')">
+                                <span class="input-group-text email" id="eyeIcon1"
+                                    style="display: none; cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);"
+                                    onclick="togglePassword('new_password')">
+                                    <img src="static/img/eye-c.jpg" alt="Toggle password visibility" id="passwordToggle1">
+                                </span>
                                 <label for="new_password">New Password</label>
                             </div>
                         </div><br>
+                        
                         <div class="col-12 form-group">
-                            <div class="form-floating">
+                            <div class="form-floating position-relative">
                                 <input class="form-control" type="password" id="confirm_password" name="confirm_password"
-                                    placeholder="confirm_password">
+                                    placeholder="Confirm Password" oninput="toggleEyeIcon('confirm_password')">
+                                <span class="input-group-text email" id="eyeIcon2"
+                                    style="display: none; cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);"
+                                    onclick="togglePassword('confirm_password')">
+                                    <img src="static/img/eye-c.jpg" alt="Toggle password visibility" id="passwordToggle2">
+                                </span>
                                 <label for="confirm_password">Confirm Password</label>
                             </div>
                         </div>
+                        
+                        
                         <div class="row btn2">
                             <button class="lb mt-4" type="submit">Save</button>
                         </div>
@@ -46,6 +59,33 @@
             return true;
         }
     </script>
+<script>
+    function togglePassword(inputId) {
+        var passwordInput = document.getElementById(inputId);
+        var passwordToggle = document.getElementById(inputId === 'new_password' ? 'passwordToggle1' : 'passwordToggle2');
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordToggle.src = "static/img/eye-o.jpg"; // Change the image to hide password
+        } else {
+            passwordInput.type = "password";
+            passwordToggle.src = "static/img/eye-c.jpg"; // Change the image to show password
+        }
+    }
+
+    function toggleEyeIcon(inputId) {
+        var passwordInput = document.getElementById(inputId);
+        var eyeIcon = document.getElementById(inputId === 'new_password' ? 'eyeIcon1' : 'eyeIcon2');
+
+        if (passwordInput.value.trim() !== "") {
+            eyeIcon.style.display = "block"; // Show the eye icon
+        } else {
+            eyeIcon.style.display = "none"; // Hide the eye icon
+        }
+    }
+</script>
+
+
 </body>
 
 </html>
