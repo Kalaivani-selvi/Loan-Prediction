@@ -1,0 +1,25 @@
+{% include 'header.html' %}
+{% include 'navbar.html' %}
+
+<div class="container-fluid page-header py-3 wow fadeIn" style="height: 100vh;" data-wow-delay="0.1s">
+    <div class="container text-center py-5">
+        <div class="f2">
+        <h2 class="head1">Loan Prediction Result</h2><br>
+        
+        {% if prediction == 'Approved' %}
+            <h3>Congratulations! 🎉 You are Approved!</h3>
+        {% elif prediction == 'Rejected' %}
+            <h3>Sorry, your loan application has been Rejected. 😔</h3>
+        {% else %}
+            <h3>Prediction: {{ prediction }}</h3>
+        {% endif %}
+        <div class="btn">
+        <a href="/form" class="rbtn">Back to Home</a>
+    </div>
+    </div>
+    </div>
+</div>
+
+   {% include 'footer.html' %}
+
+

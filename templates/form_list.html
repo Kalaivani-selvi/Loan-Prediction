@@ -1,0 +1,44 @@
+{% include 'header.html' %}
+{% include 'navbar.html' %}
+    <div class="container-fluid page-header py-3 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5">
+    <h2 class="head1">Your Loan Applications</h2><br>
+    <table  class="table table-bordered table1">
+        <thead>
+            <tr class="tableh1">
+                <th>ID</th>
+                <th>Gender</th>
+                <th>Married</th>
+                <th>Dependents</th>
+                <th>Education</th>
+                <th>Self Employed</th>
+                <th>Applicant Income</th>
+                <th>Coapplicant Income</th>
+                <th>Loan Amount</th>
+                <th>Loan Amount Term</th>
+                <th>Credit History</th>
+                <th>Property Area</th>
+                <th>Loan Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for loan_app in loan_apps %}
+            <tr class="tabled1">
+                <td>{{ loan_app.id }}</td>
+                <td>{{ loan_app.gender }}</td>
+                <td>{{ loan_app.married }}</td>
+                <td>{{ loan_app.dependents }}</td>
+                <td>{{ loan_app.education }}</td>
+                <td>{{ loan_app.self_employed }}</td>
+                <td>{{ loan_app.applicant_income }}</td>
+                <td>{{ loan_app.coapplicant_income }}</td>
+                <td>{{ loan_app.loan_amount }}</td>
+                <td>{{ loan_app.loan_amount_term }}</td>
+                <td>{{ loan_app.credit_history }}</td>
+                <td>{{ loan_app.property_area }}</td>
+                <td>{{ loan_app.predicted_loan_status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% include 'footer.html' %}

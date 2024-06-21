@@ -1,0 +1,51 @@
+{% include 'header.html' %}
+
+<body>
+    <div class="container-fluid page-header py-3 wow fadeIn"  data-wow-delay="0.1s">
+        <div class="container text-center py-5">
+            <div class="f2">
+                <h2 class="head1">Reset Password</h2>
+                <form method="post" action="/reset_p" method="post" onsubmit="return validateResetPasswordForm()">
+                    <div class="f3">
+                       
+                        <div class="col-12 form-group">
+                            <div class="form-floating">
+                                <input class="form-control" type="password" id="new_password" name="new_password"
+                                    placeholder="Password">
+                                <label for="new_password">New Password</label>
+                            </div>
+                        </div><br>
+                        <div class="col-12 form-group">
+                            <div class="form-floating">
+                                <input class="form-control" type="password" id="confirm_password" name="confirm_password"
+                                    placeholder="confirm_password">
+                                <label for="confirm_password">Confirm Password</label>
+                            </div>
+                        </div>
+                        <div class="row btn2">
+                            <button class="lb mt-4" type="submit">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function validateResetPasswordForm() {
+            const newPassword = document.getElementById("new_password").value;
+            const confirmPassword = document.getElementById("confirm_password").value;
+
+            if (newPassword.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+            if (newPassword !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>

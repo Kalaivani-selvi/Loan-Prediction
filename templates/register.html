@@ -1,0 +1,59 @@
+{% include 'header.html' %}
+
+<body>
+    <div class="container-fluid page-header py-3 wow fadeIn"  data-wow-delay="0.1s">
+        <div class="container text-center py-5">
+            <div class="f2">
+                <h2 class="head1">Register</h2>
+                <form method="post" action="/register"  method="post" onsubmit="return validateRegisterForm()">
+                    <div class="f3">
+                        <div class="col-12 form-group">
+                            <div class="form-floating">
+                                <input class="form-control" type="email" name="email" id="emailInput"
+                                    placeholder="Email address">
+                                <label for="email">Email</label>
+                            </div>
+                        </div><br>
+                        <div class="col-12 form-group">
+                            <div class="form-floating">
+                                <input class="form-control" type="password" name="password" id="passwordInput"
+                                    placeholder="Password">
+                                <label for="password">Password</label>
+                            </div>
+                        </div><br>
+                        <div class="col-12 form-group">
+                            <div class="form-floating">
+                                <input class="form-control" type="text" name="security_question" id="security_question"
+                                    placeholder="Security Question" title="Enter your first pet name">
+                                <label for="security_question" >Security Question</label>
+                            </div>
+                        </div>
+                        <a href="/login" class="p2 mt-2" title="Already have an Account?">Login</a>
+                        <div class="row btn2">
+                            <button class="lb mt-4" type="submit">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function validateRegisterForm() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const emailPattern = /^[^@]+@[^@]+\.[^@]+$/;
+
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>

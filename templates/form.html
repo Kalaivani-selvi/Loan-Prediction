@@ -1,0 +1,176 @@
+{% include 'header.html' %}
+{% include 'navbar.html' %}
+<div class="container-fluid page-header py-3 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center py-5">
+        <h2 class="head1">Loan Approval Prediction System</h2><br>
+        <form action="/predict" method="post">
+            <div class="row f1 g-3">
+                <div class="col-12 form-group">
+                    <div class="form-floating">
+                        <select class="form-select mt-3" id="gender" name="gender" required>
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        <label for="gender">Gender:</label>
+                        <button type="button" class="show-description-btn btn btn-info1" onclick="toggleDescription('desc_gender')">?</button>
+                    </div>
+                    <div id="desc_gender" class="description">
+                        Select your Gender, either Male or Female.
+                    </div>
+                </div>
+        
+                <div class="col-12 form-group">
+                    <div class="form-floating">
+                        <select class="form-select mt-3" id="married" name="married" required>
+                            <option value="" disabled selected>Select Marital Status</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <label for="married">Marital Status:</label>
+                        <button type="button" class="show-description-btn btn btn-info1" onclick="toggleDescription('desc_married')">?</button>
+                    </div>
+                    <div id="desc_married" class="description">
+                        Select your Marital Status, either Married or Unmarried.
+                    </div>
+                </div>
+        
+                <div class="col-12 form-group">
+                    <div class="form-floating">
+                        <input class="form-control" type="number" id="dependents" name="dependents" required>
+                        <label for="dependents">Dependents:</label>
+                        <button type="button" class="show-description-btn btn btn-info1" onclick="toggleDescription('desc_dependents')">?</button>
+                    </div>
+                    <div id="desc_dependents" class="description">
+                        Enter the number of people who are financially dependent on you, such as children or elderly parents.
+                    </div>
+                </div>
+        
+                <div class="col-12 form-group">
+                    <div class="form-floating">
+                        <select class="form-select mt-3" id="education" name="education" required>
+                            <option value="" disabled selected>Select Education</option>
+                            <option value="Graduate">Graduate</option>
+                            <option value="Not Graduate">Not Graduate</option>
+                        </select>
+                        <label for="education">Education:</label>
+                        <button type="button" class="show-description-btn btn btn-info1" onclick="toggleDescription('desc_education')">?</button>
+                    </div>
+                    <div id="desc_education" class="description">
+                        Select your highest level of education. Graduate means you have completed a degree program.
+                    </div>
+                </div>
+        
+                <div class="col-12 form-group">
+                    <div class="form-floating">
+                        <select class="form-select mt-3" id="self_employed" name="self_employed" required>
+                            <option value="" disabled selected>Select Self Employment Status</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <label for="self_employed">Self Employed:</label>
+                        <button type="button" class="show-description-btn btn btn-info1" onclick="toggleDescription('desc_self_employed')">?</button>
+                    </div>
+                    <div id="desc_self_employed" class="description">
+                        Indicate whether you are self-employed. Self-employed means you work for yourself rather than an employer.
+                    </div>
+                </div>
+        
+                <div class="col-12 form-group">
+                    <div class="form-floating">
+                        <input class="form-control mt-3" type="number" id="applicant_income" name="applicant_income" required>
+                        <label for="applicant_income">Applicant Income:</label>
+                        <button type="button" class="show-description-btn btn btn-info1" onclick="toggleDescription('desc_applicant_income')">?</button>
+                    </div>
+                    <div id="desc_applicant_income" class="description">
+                        Enter your total annual income before taxes and deductions.
+                    </div>
+                </div>
+        
+                <div class="col-12 form-group">
+                    <div class="form-floating">
+                        <input class="form-control mt-3" type="number" id="coapplicant_income" name="coapplicant_income" required>
+                        <label for="coapplicant_income">Coapplicant Income:</label>
+                        <button type="button" class="show-description-btn btn btn-info1" onclick="toggleDescription('desc_coapplicant_income')">?</button>
+                    </div>
+                    <div id="desc_coapplicant_income" class="description">
+                        Enter your partner's or coapplicant's total annual income before taxes and deductions.
+                    </div>
+                </div>
+        
+                <div class="col-12 form-group">
+                    <div class="form-floating">
+                        <input class="form-control mt-3" type="number" id="loan_amount" name="loan_amount" required>
+                        <label for="loan_amount">Loan Amount:</label>
+                        <button type="button" class="show-description-btn btn btn-info1" onclick="toggleDescription('desc_loan_amount')">?</button>
+                    </div>
+                    <div id="desc_loan_amount" class="description">
+                        Enter the amount of money you are requesting as a loan.
+                    </div>
+                </div>
+        
+                <div class="col-12 form-group">
+                    <div class="form-floating">
+                        <input class="form-control mt-3" type="number" id="loan_amount_term" name="loan_amount_term" required>
+                        <label for="loan_amount_term">Loan Amount Term:</label>
+                        <button type="button" class="show-description-btn btn btn-info1" onclick="toggleDescription('desc_loan_amount_term')">?</button>
+                    </div>
+                    <div id="desc_loan_amount_term" class="description">
+                        Enter the duration of the loan in months. For example, 360 months.
+                    </div>
+                </div>
+        
+                <div class="col-12 form-group">
+                    <div class="form-floating">
+                        <select class="form-select mt-3" id="credit_history" name="credit_history" required>
+                            <option value="" disabled selected>Select Credit History</option>
+                            <option value="1.0">1.0</option>
+                            <option value="0.0">0.0</option>
+                        </select>
+                        <label for="credit_history">Credit History:</label>
+                        <button type="button" class="show-description-btn btn btn-info1" onclick="toggleDescription('desc_credit_history')">?</button>
+                    </div>
+                    <div id="desc_credit_history" class="description">
+                        Enter your credit history. 1.0 means you have a good credit history, while 0.0 means you do not.
+                    </div>
+                </div>
+        
+                <div class="col-12 form-group">
+                    <div class="form-floating">
+                        <select class="form-select mt-3" id="property_area" name="property_area" required>
+                            <option value="" disabled selected>Select Property Area</option>
+                            <option value="Urban">Urban</option>
+                            <option value="Semiurban">Semiurban</option>
+                            <option value="Rural">Rural</option>
+                        </select>
+                        <label for="property_area">Property Area:</label>
+                        <button type="button" class="show-description-btn btn btn-info1" onclick="toggleDescription('desc_property_area')">?</button>
+                    </div>
+                    <div id="desc_property_area" class="description">
+                        Select the type of area where the property is located. Options are Urban, Semiurban, and Rural.
+                    </div>
+                </div>
+        
+                <div class="col-12 mt-3 pt-5">
+                    <button class="btn btn1 rounded-pill py-3 px-5" type="submit">Predict Loan Approval</button>
+                </div>
+            </div>
+        </form>
+        
+
+    </div>
+</div>
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn1 btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+<script>
+    function toggleDescription(id) {
+        var description = document.getElementById(id);
+        if (description.style.display === "none") {
+            description.style.display = "block";
+        } else {
+            description.style.display = "none";
+        }
+    }
+</script>
+{% include 'footer.html' %}
