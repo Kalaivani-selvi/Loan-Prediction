@@ -29,6 +29,9 @@ The dataset used for training and testing the model (train.csv) includes various
 ### Form List
 ![Screenshot from 2024-06-21 14-07-26](https://github.com/Kalaivani-selvi/Loan-Prediction/assets/131773154/3a38762b-ddaa-444f-81b0-b7c08f855e51)
 
+# Demo Video
+https://github.com/Kalaivani-selvi/Loan-Prediction/assets/131773154/0e9574f8-dbe9-4852-9725-f62ccfe85ee6
+
 
 
 
